@@ -1,2 +1,2 @@
 # scRNA-seq
-The scripts in scRNA-seq
+The scripts used in scRNA-seq analysis

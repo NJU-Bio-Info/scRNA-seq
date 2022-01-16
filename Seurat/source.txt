@@ -1,1 +1,20 @@
+Some helpful issue under Seurat github webpage
 
+##### How to understand PCA analysis and select PCs to do downstream analysis
+(1) https://github.com/satijalab/seurat/issues/388
+
+##### some details about NormalizeData() and ScaleData()
+(1) https://github.com/satijalab/seurat/issues/1166
+(2) https://github.com/satijalab/seurat/issues/3630
+(3) 
+
+
+##### whether to find variable features with integrated data or not?
+(1) https://github.com/satijalab/seurat/issues/1256
+(2) 
+
+
+##### whether to use 'RNA' assay or 'integrated' assay?
+(1) https://github.com/satijalab/seurat/issues/1715
+(2) https://github.com/satijalab/seurat/issues/1717
+A good practice recommended by satijalab: https://satijalab.org/seurat/archive/v3.0/immune_alignment.html

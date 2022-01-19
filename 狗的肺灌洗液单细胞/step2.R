@@ -9,14 +9,14 @@ sce <- NormalizeData(sce, #NormalizeData()这个函数是首先对基因的reads
                          normalization.method = "LogNormalize",
                          scale.factor = 1e4) 
 sce <- FindVariableFeatures(sce)#鉴定在细胞间表达高度变化的基因，后续研究需要集中于这部分基因。#
-sce <- ScaleData(sce)#移除影响方差的因素#
-sce <- RunPCA(sce, features = VariableFeatures(object = sce))#对缩放后的数据进行PCA分析，默认使用前面鉴定表达变化大的基因#
+sce <- ScaleData(sce)#做标准化#
+sce <- RunPCA(sce, features = VariableFeatures(object = sce))#主成分分析，抓出主要矛盾，找出对细胞异质性影响比较大的基因#
 
 library(harmony)
-seuratObj <- RunHarmony(sce, "orig.ident")#Harmony导入PCA的降维数据后，会采用soft k-means clustering算法将细胞聚类。#
+seuratObj <- RunHarmony(sce, "orig.ident")#Harmony是在去除批次效应#
 names(seuratObj@reductions)
 seuratObj <- RunUMAP(seuratObj,  dims = 1:15, 
-                     reduction = "harmony")#前面不是跑过PCA了吗，为什么还要跑一次UMAP#
+                     reduction = "harmony")#跑一次UMAP可以整合十五个主成分的信息，PCA一次最多只能展示两个#
 DimPlot(seuratObj,reduction = "umap",label=T ) #主成分的展示#
 
 sce=seuratObj

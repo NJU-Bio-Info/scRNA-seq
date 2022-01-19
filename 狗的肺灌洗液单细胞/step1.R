@@ -98,7 +98,7 @@ ggsave(filename="Vlnplot2.pdf",plot=p2)
 
 p3=FeatureScatter(sce.all, "nCount_RNA", "nFeature_RNA", group.by = "orig.ident", pt.size = 0.5)
 ggsave(filename="Scatterplot.pdf",plot=p3)
-#根据上述指标，过滤低质量细胞/基因#咋根据？#
+#根据上述指标，过滤低质量细胞/基因
 #过滤指标1:最少表达基因数的细胞&最少表达细胞数的基因
 selected_c <- WhichCells(sce.all, expression = nFeature_RNA > 300)
 selected_f <- rownames(sce.all)[Matrix::rowSums(sce.all@assays$RNA@counts > 0 ) > 3]
@@ -142,7 +142,7 @@ table(sce.all.filt$orig.ident)
 #可视化过滤后的情况
 feats <- c("nFeature_RNA", "nCount_RNA")
 p1_filtered=VlnPlot(sce.all.filt, group.by = "orig.ident", features = feats, pt.size = 0, ncol = 2) + 
-  NoLegend()
+  NoLegend()#Vlnplot语法和ggplot是完全一样的#
 ggsave(filename="Vlnplot1_filtered.pdf",plot=p1_filtered)
 
 feats <- c("percent_mito", "percent_ribo", "percent_hb")
@@ -153,7 +153,7 @@ ggsave(filename="Vlnplot2_filtered.pdf",plot=p2_filtered)
 #过滤指标3:过滤特定基因
 # Filter MALAT1 管家基因#为什么要过滤管家基因，是因为管家基因哪哪都表达所以不重要是不#
 sce.all.filt <- sce.all.filt[!grepl("MALAT1", rownames(sce.all.filt),ignore.case = T), ]
-# Filter Mitocondrial 线粒体基因
+# Filter Mitocondrial 线粒体基因，不同的建库方式所剩下的线粒体基因是不一样的，过滤线粒体基因是为了保证他得到的就是一个高质量的细胞，例如神经细胞单核测序要严格控制线粒体基因
 sce.all.filt <- sce.all.filt[!grepl("^MT-", rownames(sce.all.filt),ignore.case = T), ]
 # 当然，还可以过滤更多
 

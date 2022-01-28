@@ -17,4 +17,11 @@ Some helpful issue under Seurat github webpage
 ##### whether to use 'RNA' assay or 'integrated' assay?
 (1) https://github.com/satijalab/seurat/issues/1715
 (2) https://github.com/satijalab/seurat/issues/1717
+(3) https://github.com/satijalab/seurat/issues/2906
+(4) https://github.com/satijalab/seurat/issues/1659
+(5) https://github.com/satijalab/seurat/issues/1256
+(6) https://github.com/satijalab/seurat/issues/1091#issuecomment-457285643
+(7) https://github.com/satijalab/seurat/issues/4274
+(8) https://github.com/satijalab/seurat/discussions/4032
+
 A good practice recommended by satijalab: https://satijalab.org/seurat/archive/v3.0/immune_alignment.html

@@ -41,9 +41,11 @@ p1 <- DotPlot(pbmc3k,
               assay = 'RNA',
               features = subset(Seurat_markers, cluster == 'B')$gene[1:10]) + 
   theme(axis.text.x = element_text(hjust = 1, angle = 45)) + 
+  ggtitle(label = 'B cell Markers with Seurat') +
   NoLegend()
 p2 <- DotPlot(pbmc3k, 
               assay = 'RNA',
               features = COSG_markers$names$B[1:10]) +
+  ggtitle(label = 'B cell Markers with COSG') + 
   theme(axis.text.x = element_text(hjust = 1, angle = 45))
 p1 + p2
